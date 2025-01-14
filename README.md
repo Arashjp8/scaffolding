@@ -74,7 +74,5 @@ This repository contains scripts and templates to quickly scaffold client-side a
 
 ## Dependencies
 
-- **Client-Side**:  
-  [pnpm](https://pnpm.io), [Vite](https://vitejs.dev), [Tailwind CSS](https://tailwindcss.com)
-- **Server-Side**:  
-  [pnpm](https://pnpm.io), [NestJS CLI](https://nestjs.com/), [ESLint](https://eslint.org), [Prettier](https://prettier.io)
+- **Client-Side**: [pnpm](https://pnpm.io), [Vite](https://vitejs.dev), [Tailwind CSS](https://tailwindcss.com)
+- **Server-Side**: [pnpm](https://pnpm.io), [NestJS CLI](https://nestjs.com/), [ESLint](https://eslint.org), [Prettier](https://prettier.io)
