@@ -47,7 +47,7 @@ copy_template() {
   local template_name="$1"
   local destination="$2"
 
-  TEMPLATE_DIR="$HOME/scaffolding/client-side-scaffolding"
+  TEMPLATE_DIR="$HOME/dev/scaffolding/client-side-scaffolding"
   TEMPLATE_FILE="$TEMPLATE_DIR/$template_name"
 
   if [[ ! -f "$TEMPLATE_FILE" ]]; then
@@ -142,7 +142,7 @@ setup_git() {
 print_help() {
   echo -e "Usage: $0 [OPTIONS]"
 
-  local help_file="$HOME/scaffolding/client-side-scaffolding/my-client-help.txt"
+  local help_file="$HOME/dev/scaffolding/client-side-scaffolding/my-client-help.txt"
   cat "$help_file"
 
   exit 0
@@ -187,7 +187,7 @@ parse_flags() {
 
   # Prompt for app type if not set
   if [[ -z "$APP_TYPE" ]]; then
-    APP_TYPE=$(cat "$HOME/scaffolding/client-side-scaffolding/my-client-app-cheatsheet.txt" | fzf --prompt "Select app type: ")
+    APP_TYPE=$(cat "$HOME/dev/scaffolding/client-side-scaffolding/my-client-app-cheatsheet.txt" | fzf --prompt "Select app type: ")
     if [[ -z "$APP_TYPE" ]]; then
       handle_error "No app type selected."
     fi

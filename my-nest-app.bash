@@ -46,7 +46,7 @@ copy_template() {
   local template_name="$1"
   local destination="$2"
 
-  TEMPLATE_DIR="$HOME/scaffolding/server-side-scaffolding"
+  TEMPLATE_DIR="$HOME/dev/scaffolding/server-side-scaffolding"
   TEMPLATE_FILE="$TEMPLATE_DIR/$template_name"
 
   if [[ ! -f "$TEMPLATE_FILE" ]]; then
@@ -153,7 +153,7 @@ setup_git() {
 print_help() {
   echo -e "Usage: $0 [OPTIONS]"
 
-  local help_file="$HOME/scaffolding/server-side-scaffolding/my-server-help.txt"
+  local help_file="$HOME/dev/scaffolding/server-side-scaffolding/my-server-help.txt"
   cat "$help_file"
 
   exit 0
