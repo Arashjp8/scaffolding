@@ -73,22 +73,12 @@ create_vite() {
 setup_tailwind() {
   log "INFO" "Adding Tailwind CSS, PostCSS, and Autoprefixer"
   pnpm install -D tailwindcss postcss autoprefixer || handle_error "Error while installing Tailwind dependencies"
+  npx tailwindcss init -p
 
   copy_template "tailwind.config.js" "./tailwind.config.js"
-
-  update_css "./src/index.css" "@tailwind base;\n@tailwind components;\n@tailwind utilities;"
-}
-
-update_css() {
-  local css_file="$1"
-  local content="${2:-}"
-
-  if [[ ! -f "$css_file" ]]; then
-    handle_error "$css_file does not exist."
-  else
-    echo -e "$content" > "$css_file"
-    log "SUCCESS" "Added Tailwind directives to $css_file."
-  fi
+  copy_template "./index.css" "./src/index.css"
+  copy_template "./App.css" "./src/App.css" 
+  copy_template "./App.tsx" "./src/App.tsx" 
 }
 
 setup_eslint() {

@@ -26,20 +26,23 @@ This repository contains scripts and templates to quickly scaffold client-side a
 
 ```plaintext
 ./
-├── client-side-scaffolding/
+├── client-side-scaffolding
+│   ├── App.css
+│   ├── App.tsx
 │   ├── eslint.config.js
+│   ├── index.css
 │   ├── my-client-app-cheatsheet.txt
 │   ├── my-client-help.txt
 │   └── tailwind.config.js
 ├── my-client-app.bash
 ├── my-nest-app.bash
-├── server-side-scaffolding/
-│   ├── my-server-help.txt
-│   ├── nest-cli.json
-│   ├── package.json
-│   ├── pnpm-lock.yaml
-│   ├── tsconfig.build.json
-│   └── tsconfig.json
+└── server-side-scaffolding
+    ├── my-server-help.txt
+    ├── nest-cli.json
+    ├── package.json
+    ├── pnpm-lock.yaml
+    ├── tsconfig.build.json
+    └── tsconfig.json
 ```
 
 ## Usage
