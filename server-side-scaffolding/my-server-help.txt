@@ -1,0 +1,11 @@
+
+Options:
+  --project-name <name>       Name of the project to create.
+  --visibility <visibility>   Visibility for the GitHub repository: 'public' or 'private' (default: 'public').
+  --skip-git                  Skip initializing a Git repository.
+  --skip-eslint               Skip setting up ESLint.
+  --skip-prettier               Skip setting up PRETTIER.
+  --help                      Show this help message and exit.
+
+Example:
+  > create-nest-app --project-name my-nest-app --visibility private

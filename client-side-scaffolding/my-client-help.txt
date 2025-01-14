@@ -1,0 +1,12 @@
+
+Options:
+  --project-name <name>       Name of the project to create.
+  --app-type <type>           Type of app to create: 'vite' or 'next-app'.
+  --visibility <visibility>   Visibility for the GitHub repository: 'public' or 'private' (default: 'public').
+  --skip-git                  Skip initializing a Git repository.
+  --skip-tailwind             Skip adding Tailwind CSS.
+  --skip-eslint               Skip setting up ESLint.
+  --help                      Show this help message and exit.
+
+Example:
+  > create-client-app --project-name my-vite-app --app-type vite --visibility private
