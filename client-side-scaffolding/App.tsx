@@ -1,5 +1,13 @@
 function App() {
-  return <div className={"text-white text-3xl bg-sky-400"}>mooooo 🐮</div>;
+  return (
+    <div
+      className={
+        "w-full min-h-screen flex justify-center items-center text-white text-3xl bg-gray-900"
+      }
+    >
+      mooooo 🐮
+    </div>
+  );
 }
 
 export default App;
