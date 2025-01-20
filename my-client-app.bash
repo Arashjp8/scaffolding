@@ -61,7 +61,7 @@ copy_template() {
 create_vite() {
   local project_name="$1"
   log "INFO" "Creating Vite project $project_name"
-  
+
   pnpm create vite@latest "$project_name" -- || handle_error "Error while creating the Vite project."
 
   cd "$HOME/dev/$project_name" || handle_error "Failed to navigate to project directory."
@@ -72,13 +72,14 @@ create_vite() {
 
 setup_tailwind() {
   log "INFO" "Adding Tailwind CSS, PostCSS, and Autoprefixer"
+
   pnpm install -D tailwindcss postcss autoprefixer || handle_error "Error while installing Tailwind dependencies"
   npx tailwindcss init -p
 
   copy_template "tailwind.config.js" "./tailwind.config.js"
   copy_template "./index.css" "./src/index.css"
-  copy_template "./App.css" "./src/App.css" 
-  copy_template "./App.tsx" "./src/App.tsx" 
+  copy_template "./App.css" "./src/App.css"
+  copy_template "./App.tsx" "./src/App.tsx"
 }
 
 setup_eslint() {
@@ -91,7 +92,6 @@ setup_git() {
   local project_name="$1"
   local visibility="${2:-public}"
 
-  # Initialize the local git repository only once
   if git init &>/dev/null; then
     log "SUCCESS" "Local git repository initialized successfully."
   else
@@ -100,26 +100,29 @@ setup_git() {
 
   copy_template ".gitignore" "./.gitignore"
 
-  # Check if the GitHub repository already exists
   if gh repo view "$project_name" &>/dev/null; then
     log "WARNING" "GitHub repository '$project_name' already exists on GitHub."
-    # Ask the user for a new project name
     read -p "Enter a new repository name: " new_project_name
-    
-    # Recursively call the function with the new name, but skip re-initializing git
+
     setup_git "$new_project_name" "$visibility"
     return
   fi
 
-  # Prompt to create a GitHub repository if it wasn't skipped and the flag wasn't set
   if [[ -z "$SKIP_GIT" ]]; then
     read -p "Do you want to create a GitHub repository for this project? (Y/n): " create_repo
     create_repo="${create_repo:-Y}" # Default to Y if no input
-    
+
     if [[ "$create_repo" =~ ^[Yy]$ ]]; then
-      # Create the repository on GitHub
       if gh repo create "$project_name" --"$visibility" &>/dev/null; then
         log "SUCCESS" "GitHub repository '$project_name' created successfully as $visibility."
+
+        git add .
+        git commit -m "[initial] - first commit"
+        git branch -M main
+        git remote add origin "https://github.com/Arashjp8/${project_name}"
+        git push -u origin main
+
+        log "SUCCESS" "GitHub repository linked and initial commit pushed."
       else
         handle_error "Failed to create GitHub repository. Ensure you are authenticated with GitHub CLI."
       fi
@@ -175,7 +178,6 @@ parse_flags() {
     esac
   done
 
-  # Prompt for app type if not set
   if [[ -z "$APP_TYPE" ]]; then
     APP_TYPE=$(cat "$HOME/dev/scaffolding/client-side-scaffolding/my-client-app-cheatsheet.txt" | fzf --prompt "Select app type: ")
     if [[ -z "$APP_TYPE" ]]; then
@@ -183,7 +185,6 @@ parse_flags() {
     fi
   fi
 
-  # Prompt for project name if not set
   if [[ -z "$PROJECT_NAME" ]]; then
     read -p "Enter project name: " input
     PROJECT_NAME=$(echo "$input" | sed -E "s/([a-z])([A-Z])/\1-\L\2/g" | tr "._ " "-")

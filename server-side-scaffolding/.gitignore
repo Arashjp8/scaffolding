@@ -58,3 +58,5 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 TODO.md
 .env
 *.env
+api-collection/
+api-collection/*
