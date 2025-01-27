@@ -60,3 +60,5 @@ TODO.md
 *.env
 api-collection/
 api-collection/*
+data/
+data/*

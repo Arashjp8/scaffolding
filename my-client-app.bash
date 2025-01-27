@@ -71,15 +71,19 @@ create_vite() {
 }
 
 setup_tailwind() {
-  log "INFO" "Adding Tailwind CSS, PostCSS, and Autoprefixer"
+  # log "INFO" "Adding Tailwind CSS, PostCSS, and Autoprefixer"
+  log "INFO" "Adding Tailwind CSS"
 
-  pnpm install -D tailwindcss postcss autoprefixer || handle_error "Error while installing Tailwind dependencies"
-  npx tailwindcss init -p
+  # pnpm install -D tailwindcss postcss autoprefixer || handle_error "Error while installing Tailwind dependencies"
+  # npx tailwindcss init -p
+  pnpm install -D tailwindcss @tailwindcss/vite || handle_error "Error while installing Tailwind dependencies"
 
   copy_template "tailwind.config.js" "./tailwind.config.js"
   copy_template "./index.css" "./src/index.css"
   copy_template "./App.css" "./src/App.css"
   copy_template "./App.tsx" "./src/App.tsx"
+  copy_template "./index.html" "./index.html"
+  copy_template "./vite.config.ts" "./vite.config.ts" 
 }
 
 setup_eslint() {
