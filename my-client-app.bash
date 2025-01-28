@@ -76,6 +76,7 @@ setup_tailwind() {
 
   # pnpm install -D tailwindcss postcss autoprefixer || handle_error "Error while installing Tailwind dependencies"
   # npx tailwindcss init -p
+
   pnpm install -D tailwindcss @tailwindcss/vite || handle_error "Error while installing Tailwind dependencies"
 
   # copy_template "tailwind.config.js" "./tailwind.config.js"
@@ -103,7 +104,7 @@ setup_git() {
   fi
 
   copy_template ".gitignore" "./.gitignore"
-  copy_template "TODO.md" "./TODO.md"
+  copy_template "ScafTODO.md" "./TODO.md"
 
   if gh repo view "$project_name" &>/dev/null; then
     log "WARNING" "GitHub repository '$project_name' already exists on GitHub."
