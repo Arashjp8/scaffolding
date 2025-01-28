@@ -122,6 +122,7 @@ setup_git() {
   fi
 
   copy_template ".gitignore" "./.gitignore"
+  copy_template "TODO.md" "./TODO.md"
 
   if gh repo view "$project_name" &>/dev/null; then
     log "WARNING" "GitHub repository '$project_name' already exists on GitHub."
